@@ -124,7 +124,7 @@ def main(user, passwd, step):
     response = requests.post(url, data=data, headers=head).json()
     #print(response)
     result = f"{user[:4]}****{user[-4:]}: [{now}] 修改步数（{step}）"+ response['message']
-    print(result)
+    print(f"修改步数({step})"+response['message'])
     qqtalk = 'https://qmsg.zendee.cn/send/KYE?msg=' + "修改步数：" + step + "  " + response[
         'message'] + '&qq=QQ'
     requests.get(qqtalk)
@@ -133,11 +133,20 @@ def main(user, passwd, step):
 # qqtalk = 'https://qmsg.zendee.cn/send/输入你的kye?msg=' + "修改步数：" + step + "  " + response[
 #        'message'] + '&qq=输入你的qq号'
 #获取时间戳
+# def get_time():
+#     url = 'http://worldtimeapi.org/api/timezone/Asia/Shanghai'
+#     response = requests.get(url, headers=headers)
+#     response.raise_for_status()
+#     data = response.json()
+#     t = str(data['unixtime'])+'000'
+#     return t
+from datetime import datetime
+
 def get_time():
-    url = 'http://worldtimeapi.org/api/timezone/Asia/Shanghai'
-    response = requests.get(url, headers=headers).json()
-    t = str(response['unixtime'])+'000'
+    local_time = datetime.now().timestamp()
+    t = str(int(local_time)) + '000'
     return t
+
 
 #获取app_token
 def get_app_token(login_token):
@@ -150,11 +159,11 @@ def get_app_token(login_token):
 
 def main_handler(event, context):
     # 用户名（单用户的格式为 13800138000 ，多用户用#隔开，例如13800138000#13800138000#13800138000）
-    user = "账号"
+    user = "1950946176@qq.com"
     # 登录密码（用#隔开，例如123456#123456#123456）
-    passwd = "密码"
+    passwd = "Ldy20020519"
     # 要修改的步数，直接输入想要修改的步数值，留空为随机步数20000至29999之间
-    step = ""
+    step = "5555"
 
     user_list = user.split('#')
     passwd_list = passwd.split('#')
@@ -171,3 +180,26 @@ def main_handler(event, context):
         telegram_bot("小米运动", push)
     else:
         print('用户名和密码数量不对')
+
+if __name__ == '__main__':
+    # 用户名（单用户的格式为 13800138000 ，多用户用#隔开，例如13800138000#13800138000#13800138000）
+    user = "1950946176@qq.com"
+    # 登录密码（用#隔开，例如123456#123456#123456）
+    passwd = "Ldy20020519"
+    # 要修改的步数，直接输入想要修改的步数值，留空为随机步数20000至29999之间
+    import random
+    step = random.randint(300,700)
+    
+    try:
+        data = json.loads(open('bushu.json','r').read())
+        if data['time']:
+            last_time = datetime.fromisoformat(data['time'])
+            if last_time.date() == datetime.today().date():
+                step += int(data['step'])
+    except:
+        pass
+
+    json.dump({'step':step,'time':datetime.now().isoformat()},open('bushu.json','w'))
+    
+    step = min(700, step)+random.randint(0,300)
+    main(user, passwd, step)
