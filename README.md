@@ -1,5 +1,7 @@
 # StepNumberChange(SNC)
 
+2024.10.12更新，修改淘宝时间戳报错问题，目前代码已可以正常使用
+
 2023.03.05更新，手机号登录方式失效，可以直接用邮箱登录，支付宝微信都可以修改，在账号处填写邮箱即可，代码已修改
 
 ## 🚶‍♂️项目简介(Project Introduction)：
@@ -28,6 +30,8 @@
 【腾讯文档】SNC README https://docs.qq.com/doc/DWmFLWU1MV2NpcVNQ 将使用说明写在了腾讯文档中（图文），有需要的朋友可以点开链接进行查看，以下为文字版。
 
 【腾讯文档】SNC阿里云使用图文教程 https://docs.qq.com/doc/DWk5rTVN1SldEdWNk   阿里云版本，写的比较简陋，2022.10.23更新可以正常使用
+
+【腾讯文档】SNC微信或支付宝不同步教程 https://docs.qq.com/doc/DWkd6ZFRseUh5YXZi 有遇到步数没有更新的话请查看这篇文档！
 
 **项目简介：** 本项目通过代码进行修改小米运动app，然后将同步到微信、支付宝的运动步数（**无视操作系统，苹果安卓皆可使用，无需root权限**），再使用腾讯云的定时器，实现全自动每日随机修改步数（20000-29999步）
 
@@ -85,8 +89,8 @@ ___Don't to small and not for good, it is a sin to steal a pin___
 <hr>
 <blockquote>
 <img src="https://sszblog.oss-cn-shenzhen.aliyuncs.com/img/step0414.png" width="35%">  
-<img src="https://sszblog.oss-cn-shenzhen.aliyuncs.com/img/step241001.jpg" width="30%">
-<img src="https://sszblog.oss-cn-shenzhen.aliyuncs.com/img/step241007.jpg" width="30%">
+<img src="https://sszblog.oss-cn-shenzhen.aliyuncs.com/img/step250204.jpg" width="30%">
+<img src="https://sszblog.oss-cn-shenzhen.aliyuncs.com/img/step250205.jpg" width="30%">
 
 
 <div align=center>
